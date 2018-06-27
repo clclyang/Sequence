@@ -2,7 +2,6 @@
 
 int Sequence::length()
 {
-  sd=str.size();
   return sd;
 }
 int Sequence::numberOf(char base)
@@ -57,20 +56,15 @@ if(str1[0]=='T')str1+='T';
 string Sequence::longestRepeated()
 {
   string str1,str2;
-  int y=10;
-  int e=0;
-  str1=found(e,y,str1);
-  while(y<sd)
+  for(int e=0;e<sd-11;e++)
+  for(int y=e+10;y<sd;y++)
   {
-    int s=str1.size();
-    y++;e++;
-    str2=found(e,y,str2);
-    int p=str2.size();
-    if(p>s)
-    {
-       str1=str2;str2.clear();
-    }
-  }
+     str2=found(e,y,str2);
+     int a=str2.size();
+     int b=str1.size();
+     if(a>b)str1=str2;
+     str2.clear();
+   }
   return str1;
 }
 Sequence::~Sequence()
@@ -79,7 +73,7 @@ Sequence::~Sequence()
 }
 string Sequence::found(int a,int b,string stre)
 {
-  if(str[a]==str[b])
+  if(str[a]==str[b]&&a<b&&b<sd)
   { 
     stre+=str[a];
     a++;b++;found(a,b,stre);

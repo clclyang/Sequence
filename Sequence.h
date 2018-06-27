@@ -15,6 +15,7 @@ class Sequence
   ifstream input(fl.c_str());
   while(!input.eof())
   getline(input,strm),str+=strm;
+  sd=str.size();
   input.close();
 }
   string found(int a,int b,string stre);
